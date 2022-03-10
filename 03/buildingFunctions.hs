@@ -20,3 +20,11 @@ lastWord s =
             else last (tail rest) ((head rest) : acc) 
 
 
+lastWordInFront :: String -> String
+lastWordInFront s =
+    (lastWord s) ++ reverse (dropLastWord (reverse s))
+    where dropLastWord :: String -> String
+          dropLastWord s =
+            if (length s == 0) then s
+            else if (head s == ' ') then (tail s) ++ " "
+            else dropLastWord (tail s)  
